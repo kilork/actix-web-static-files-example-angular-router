@@ -1,0 +1,21 @@
+[package]
+name = "angular-example-frontend"
+version = "0.1.0"
+authors = ["Alexander Korolev <kilork@yandex.ru>"]
+edition = "2018"
+categories = []
+description = """
+angular-example-frontend description.
+"""
+homepage = "https://github.com/kilork/actix-web-static-files-example-angular-router"
+keywords = []
+license = "Unlicense OR MIT"
+readme = "README.md"
+repository = "https://github.com/kilork/actix-web-static-files-example-angular-router"
+build = "build.rs"
+
+[dependencies]
+actix-web-static-files = "3.0.3"
+
+[build-dependencies]
+actix-web-static-files = "3.0.3"
