@@ -28,4 +28,4 @@ log = "0.4"
 env_logger = "0.8"
 
 angular-example-frontend = { path = "../frontend", optional = true }
-actix-web-static-files = { version = "3.0.3", optional = true }
+actix-web-static-files = { version = "3.0.4", features = [ "change-detection" ], optional = true }
