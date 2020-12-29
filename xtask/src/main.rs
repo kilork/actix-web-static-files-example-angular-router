@@ -7,19 +7,39 @@ use std::{
     thread::spawn,
 };
 
+#[cfg(not(windows))]
+const NPM_CMD: &str = "npm";
+
+#[cfg(windows)]
+const NPM_CMD: &str = "npm.cmd";
+
 fn npm() -> String {
-    env::var("NPM").unwrap_or_else(|_| "npm".to_string())
+    env::var("NPM").unwrap_or_else(|_| NPM_CMD.to_string())
 }
 
-fn npm_cmd(cmd: &str) -> Result<()> {
+#[cfg(not(windows))]
+fn cmd(executable: &str) -> Command {
+    Command::new(executable)
+}
+
+#[cfg(windows)]
+fn cmd(executable: &str) -> Command {
+    let mut cmd = Command::new("cmd");
+
+    cmd.arg("/c").arg(&self.executable);
+
+    cmd
+}
+
+fn npm_cmd(command: &str) -> Result<()> {
     let npm = npm();
-    let status = Command::new(npm)
+    let status = cmd(&npm)
         .current_dir(frontend_dir())
-        .arg(cmd)
+        .arg(command)
         .status()?;
 
     if !status.success() {
-        return Err(anyhow!("'npm {}' failed", cmd));
+        return Err(anyhow!("'npm {}' failed", command));
     }
 
     Ok(())
@@ -95,7 +115,9 @@ fn cargo_install_watch() -> Result<()> {
         return Ok(());
     }
 
-    let status = Command::new(cargo()).args(&["install", "cargo-watch"]).status()?;
+    let status = Command::new(cargo())
+        .args(&["install", "cargo-watch"])
+        .status()?;
 
     if !status.success() {
         return Err(anyhow!("'cargo install watch' failed"));
@@ -125,7 +147,9 @@ fn main() -> Result<()> {
     match subcommand.as_str() {
         "clean" => {
             args.finish()?;
-            spawn(cargo_clean).join().expect("cannot join cargo clean")?;
+            spawn(cargo_clean)
+                .join()
+                .expect("cannot join cargo clean")?;
             npm_clean()?;
         }
         "install" => {
