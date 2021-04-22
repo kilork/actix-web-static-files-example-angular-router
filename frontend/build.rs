@@ -1,4 +1,4 @@
-use actix_web_static_files::NpmBuild;
+use static_files::NpmBuild;
 
 fn main() {
     NpmBuild::new("./web")

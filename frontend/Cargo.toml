@@ -15,7 +15,8 @@ repository = "https://github.com/kilork/actix-web-static-files-example-angular-r
 build = "build.rs"
 
 [dependencies]
-actix-web-static-files = { version = "3.0.5", features = [ "change-detection" ] }
+actix-web-static-files = "3.1"
+static-files = "0.2.1"
 
 [build-dependencies]
-actix-web-static-files = { version = "3.0.5", features = [ "change-detection" ] }
+static-files = "0.2.1"
