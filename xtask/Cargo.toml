@@ -5,5 +5,5 @@ authors = ["Alexander Korolev <kilork@yandex.ru>"]
 edition = "2018"
 
 [dependencies]
-pico-args = "0.3"
+pico-args = "0.4"
 anyhow = "1.0"
