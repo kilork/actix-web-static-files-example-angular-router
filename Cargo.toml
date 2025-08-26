@@ -1,7 +1,27 @@
 [workspace]
+resolver = "2"
 
 members = [
     "backend",
     "frontend",
     "xtask",
 ]
+
+[workspace.package]
+version = "0.1.0"
+authors = ["Alexander Korolev <kilork@yandex.ru>"]
+edition = "2021"
+categories = []
+homepage = "https://github.com/kilork/actix-web-static-files-example-angular-router"
+keywords = []
+license = "Unlicense OR MIT"
+repository = "https://github.com/kilork/actix-web-static-files-example-angular-router"
+publish = false
+
+[workspace.dependencies]
+actix-web-static-files = { version = "4", features = ["static-files-03"] }
+static-files = "0.3.1"
+
+[patch.crates-io]
+static-files.path = "../../static-files-rs/static-files"
+actix-web-static-files.path = "../actix-web-static-files"

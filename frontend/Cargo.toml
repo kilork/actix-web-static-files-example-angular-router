@@ -1,22 +1,20 @@
 [package]
 name = "angular-example-frontend"
-version = "0.1.0"
-authors = ["Alexander Korolev <kilork@yandex.ru>"]
-edition = "2018"
-categories = []
 description = """
 angular-example-frontend description.
 """
-homepage = "https://github.com/kilork/actix-web-static-files-example-angular-router"
-keywords = []
-license = "Unlicense OR MIT"
-readme = "README.md"
-repository = "https://github.com/kilork/actix-web-static-files-example-angular-router"
-build = "build.rs"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+categories.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+license.workspace = true
+repository.workspace = true
 
 [dependencies]
-actix-web-static-files = "4.0"
-static-files = "0.2.1"
+actix-web-static-files.workspace = true
+static-files.workspace = true
 
 [build-dependencies]
-static-files = "0.2.1"
+static-files.workspace = true
